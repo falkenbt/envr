@@ -13,16 +13,12 @@ module.exports = function (controller) {
                         convo.setVar("env", environment);
                         var state = controller.storage.channels.get(environment, function (err, user_data) {
                             if (err) {
-                                console.log(user_data);
                                 controller.storage.channels.save({ id: environment, timestamp: currentdate, user: message.user }, function (err) { null });
                                 convo.gotoThread("success");
                             }
                             else {
-                                console.log("already locked: " + user_data.user)
                                 convo.setVar("user", user_data.user);
                                 convo.setVar("timestamp", user_data.timestamp);
-                                convo.say("Sorryyyyy '{{vars.env}}' already locked by {{vars.user}} at {{vars.timestamp}}")
-                                convo.next()
                                 convo.gotoThread("unlock");
                             }
                         })
@@ -48,32 +44,29 @@ module.exports = function (controller) {
             convo.addMessage(
                 "Cool, I locked '{{vars.env}}' for you, have fun!",
                 "success");
-            //already locked thread
+            //unlock thread
             convo.addMessage(
                 "Sorry '{{vars.env}}' already locked by {{vars.user}} at {{vars.timestamp}}",
-                "already_locked");
+                "unlock");
             convo.addQuestion("do you want to unlock {{vars.env}}?", function (response, convo) {
                 if (response.text === "yes") {
                     console.log("delete lock")
                     controller.storage.channels.delete(this.vars.env, function (err) {
                         
                         if (!err) {
-                            console.log("no err")
-                            //convo.gotoThread("success")
-                            convo.say("Successfully removed {{vars.env}}-lock! Type lock if you want to lock an environment. ") 
+                            convo.say("Yeah! Successfully removed {{vars.env}}-lock! Type lock if you want to lock an environment. ") 
                             convo.next()
-                            
                             }
                         else { 
-                            console.log("error")
-                        
-                            convo.say("Error deleting. ") 
+                            convo.say("Damnit! Error deleting the lock : "+err.name+" - "+err.message) 
                             convo.next()
                         }
 
                     });
                 }
                 else {
+                    convo.say("Ok, as you wish...") 
+                    convo.next()
                     console.log("do nothing.")
                 }
             }, {}, 'unlock'

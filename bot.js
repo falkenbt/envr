@@ -42,7 +42,7 @@ var controller = Botkit.sparkbot({
     ciscospark_access_token: accessToken,
     secret: process.env.SECRET, // this is a RECOMMENDED security setting that checks if incoming payloads originate from Webex
     webhook_name: process.env.WEBHOOK_NAME || ('built with BotKit (' + env + ')'),
-    json_file_store: './state.json'
+    json_file_store: './state'
 });
 
 var bot = controller.spawn({
