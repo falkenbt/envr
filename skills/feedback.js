@@ -7,7 +7,7 @@ module.exports = function (controller) {
         bot.say(
             {
               text: 'Feeback received',
-              channel: 'thomas.falkenberg@payback.net' 
+              channel: 'Y2lzY29zcGFyazovL3VzL1JPT00vNDVmMGY1ZTAtMTUyYS0xMWU5LTg3MmUtZWJlMmZjODhiOTQ2' 
             }
           );
     });
