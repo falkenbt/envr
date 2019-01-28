@@ -8,6 +8,7 @@ module.exports = function (controller) {
         text += "\n- " + bot.enrichCommand(message, "help") + ": spreads the word about my skills";
         text += "\n- " + bot.enrichCommand(message, "lock") + ": lock an environment. This will just create a file in my working directory with some meta-info. ";
         text += "\n- " + bot.enrichCommand(message, "unlock") + ": TODO. Fow now use 'lock' command to unlock.";
+        text += "\n- " + bot.enrichCommand(message, "feedback") + ": Give Feedback! It will be Forwarded to a central space";
         bot.reply(message, text);
     });
 }
