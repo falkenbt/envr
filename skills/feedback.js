@@ -6,8 +6,8 @@ module.exports = function (controller) {
 
         bot.say(
             {
-              text: 'Feeback from ' + message.user + ': '+ message.text,
-              channel: masterId 
+              text: 'Feeback received',
+              channel: 'thomas.falkenberg@payback.net' 
             }
           );
     });
