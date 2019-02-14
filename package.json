@@ -1,5 +1,5 @@
 {
-  "description": "Botkit template for Webex Teams",
+  "description": "Bot to lock shared resources (environments), based on botkit template for Webex Teams",
   "version": "0.4.0",
   "main": "bot.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "botkit",
     "devnet"
   ],
-  "author": "Stève Sfartz (Cisco DevNet) <stsfartz@cisco.com>",
+  "author": "Thomas Falkenberg (thomas.falkenberg@payback.net)",
   "license": "MIT",
   "dependencies": {
     "botkit": "^0.7.0",
